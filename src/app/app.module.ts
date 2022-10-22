@@ -19,6 +19,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
+import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.component";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatRadioModule} from "@angular/material/radio";
     CustomAsyncValidatorDirective,
     CustomValidatorDirective,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
