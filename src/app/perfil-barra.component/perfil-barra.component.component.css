@@ -1,0 +1,45 @@
+.perfil_contenedor{
+  background-color: #dadada;
+  /* margin-top:4rem ; */
+  /* position:fixed; */
+}
+
+.datos_perfil_contenedor{
+  margin: 0.5rem;
+  margin-top: 0%;
+}
+.datos_perfil_item{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: left;
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+.llave,.valor{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: 700;
+}
+.valor{
+  text-align: center;
+  font-weight: 300;
+}
+.titulo{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #000000;
+  text-align: left;
+  }
+.titulo_perfil{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding-top: 2rem;
+    margin-left: 2rem;
+}
+
+.decoration{
+  text-decoration: none;
+}
