@@ -1,0 +1,155 @@
+.contenedor_titulo{
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  padding-top: 5rem;
+  width: 551px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contenedor_titulo img{
+  width: 62px;
+  height: 77px;
+  display: flex;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+.titulo{
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 700;
+font-size: 30px;
+color: #000000;
+text-align: left;
+}
+.botones_contenedor{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.btn_primero{
+  margin-left: auto;
+  margin-right: 1rem;
+}
+.btn_segundo{
+  margin-right: auto;
+  margin-left: 1rem;
+}
+.titulo_perfil{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+.titulo_perfil img{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+.titulo_perfil .titulo{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+                                      /* INICIO contenedor CARDS PREGUNTAS */
+                                      .encabezado_card_pregunta{
+                                        display: grid;
+                                        grid-template-columns: 0.2fr 1fr 0.3fr;
+                                      }
+                                      .encabezado_card_pregunta img{
+                                        margin-left: auto;
+                                        margin-right: auto;
+                                      }
+                                      .etiqueta{
+                                        display: grid;
+                                        grid-template-columns: 0.2fr 1fr;
+                                        margin-bottom: 0.5rem;
+                                        height: 43px;
+                                        margin-right: auto;
+                                        background-color: #ffff;
+                                        border-radius: 15px;
+                                        border-color: #000000;
+                                        border-width: 2px;
+                                    }
+                                    .titulo_pregunta{
+                                      font-family: Arial, Helvetica, sans-serif;
+                                      font-size: 17px;
+                                      font-weight: 700;
+                                      margin: 0px;
+                                      margin-top: auto;
+                                      margin-bottom: auto;
+
+                                    }
+                                    .fecha_pregunta{
+                                      font-family: Arial, Helvetica, sans-serif;
+                                      color: #b3b3b3;
+                                      font-size: 20px;
+                                    }
+                                    .contenedor_card{
+                                      background-color: #D9D9D9;
+                                      margin: 2rem;
+                                      border-radius: 15px;
+                                      padding: 1rem;
+                                    }
+
+
+
+                                    .boton{
+                                      width: 305px;
+                                      background-color: #4EB9E7;
+                                      border-color: #ffff;
+                                      color: #ffff;
+                                      font-size: 20px;
+                                      font-weight: 700;
+                                      font-family: Arial, Helvetica, sans-serif;
+                                      border-radius: 189px;
+                                      cursor: pointer;
+                                    }
+                                    .boton:hover{
+                                      background-color: black;
+                                      border-color: #4EB9E7;
+                                      color: #4EB9E7;
+                                      border-width: 5px;
+                                    }
+                                    .centrar_h{
+                                      margin-left: auto;
+                                      margin-right: auto;
+                                      text-align: center;
+                                    }
+                                    .titulo_2{
+                                      text-align: center;
+                                      font-family: Arial, Helvetica, sans-serif;
+                                      font-size: 24px;
+                                      font-weight: 700;
+                                      margin-top: 2rem;
+                                      margin-bottom: 2rem;
+                                    }
+.decoration{
+  text-decoration: none;
+}
+
+
+.boton_p{
+  width: 305px;
+  background-color: #4EB9E7;
+  border-color: #ffff;
+  color: #ffff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 189px;
+  cursor: pointer;
+}
+
+
+.botones_contenedor .boton_p{
+  background-color: #DDA0DD;
+  width: 158px;
+  margin-top: 2rem;
+}
+.boton_p a{
+  color: black;
+}
+
+.botones_contenedor button:hover,.boton_p a:hover{
+  background-color: #000000;
+  color: #DDA0DD;
+}
