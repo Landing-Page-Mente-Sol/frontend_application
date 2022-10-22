@@ -1,0 +1,42 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container > form {
+  padding: 5rem;
+}
+
+.form-button {
+  border-radius: 1rem !important;
+}
+
+.form-link {
+  text-decoration: underline;
+  color: #03a9f4;
+}
+
+  .form-link:hover {
+    text-decoration: underline;
+    color: #000;
+  }
+
+@media (max-width: 960px) {
+  .form-card {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .form-card  {
+    max-width: 25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .form-card  {
+    max-width: 20rem;
+  }
+}

@@ -1,0 +1,74 @@
+.mat-grid-list {
+  height: 30rem;
+}
+
+.form-card {
+  width: 40rem;
+}
+
+.login {
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.use-terms {
+  margin-bottom: 1rem;
+}
+
+.form-button {
+  width: 8rem;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  width: 35rem;
+}
+
+.separator {
+  border-top: 3px solid black;
+  width: 45%;
+  margin:  auto;
+}
+
+.type-option {
+  margin: auto;
+}
+
+.mat-card-footer {
+  display: grid;
+  gap: 0.3rem;
+}
+
+@media (max-width: 960px) {
+  .card {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .card  {
+    max-width: 25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .card  {
+    max-width: 20rem;
+  }
+}
+
+.form-link:hover {
+  cursor: pointer;
+}
+
+.to-back {
+  margin-bottom: 0.5rem;
+}
+

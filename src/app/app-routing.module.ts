@@ -7,14 +7,41 @@ import { BuscarComponent } from './buscar/buscar.component';
 import { HomeComponentComponent } from './home.component/home.component.component';
 import { PerfilComponentComponent } from './perfil.component/perfil.component.component';
 
+import { SignInComponent } from "./public/sign-in/sign-in.component";
+import {SignUpComponent} from "./public/sign-up/sign-up.component";
+import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.component";
+import {ChangePasswordComponent} from "./users/pages/change-password/change-password.component";
+
+
 const routes: Routes = [
-  {path:'',component:HomeComponentComponent},
+
   {path:'home',component:HomeComponentComponent},
   {path: 'add_pregunta', component:AddQuestionComponentComponent},
   {path:'add-asignatura', component:AgregarAsignaturaComponentComponent},
   {path:'perfil',component:PerfilComponentComponent},
   {path:'buscar',component:BuscarComponent},
-  {path:'agregar_respuesta', component:AgregarRespuestaComponent}
+  {path:'agregar_respuesta', component:AgregarRespuestaComponent},
+  {
+    path: 'sign-in',
+    component: SignInComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'sign-in',
+    pathMatch: 'full'
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent
+  }
 ];
 
 @NgModule({

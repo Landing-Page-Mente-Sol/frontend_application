@@ -32,6 +32,7 @@ export class AsignaturasComponentComponent implements OnInit {
 
   filtro_asignatura(i:number){
     this.recursosService.create({"id":0,"numero":i}).subscribe((aux)=>console.log(aux));
+    localStorage.setItem("item_buscar","");
   }
 
 }

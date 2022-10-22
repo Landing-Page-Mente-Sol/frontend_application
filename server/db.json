@@ -436,6 +436,28 @@
     }
   ],
   "usuarios": [],
+  "users": [
+    {
+      "name": "Yoimer",
+      "lastName": "Davila Ramirez",
+      "password": "12345678",
+      "username": "Yoimerdr",
+      "upcCode": "u20201b973",
+      "email": "tulocomessi200328@gmail.com",
+      "type": "tutor",
+      "id": 1
+    },
+    {
+      "name": "Jerry",
+      "lastName": "Quispe Gavilan",
+      "password": "Jerry01234",
+      "username": "Jerry",
+      "upcCode": "U202010143",
+      "email": "Jerry@gmail.com",
+      "type": "tutor",
+      "id": 2
+    }
+  ],
   "asignaturas": [
     {
       "id": 0,
@@ -515,6 +537,18 @@
     {
       "id": 8,
       "numero": 0
+    },
+    {
+      "id": 9,
+      "numero": 0
+    },
+    {
+      "id": 10,
+      "numero": 8
+    },
+    {
+      "id": 11,
+      "numero": -1
     }
   ],
   "recursos_buscar": []

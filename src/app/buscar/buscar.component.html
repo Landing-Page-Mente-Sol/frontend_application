@@ -1,7 +1,8 @@
 <div class="ventana_buscar">
   <div *ngFor="let pregunta of preguntas; index as k">
+
     <div
-    *ngIf="pregunta.etiqueta==recursos[recursos.length-1].numero"> <!-- AQUI ES LA CONDICIONAL
+    *ngIf="pregunta.etiqueta==recursos[recursos.length-1].numero||item_buscar==pregunta.titulo"> <!-- AQUI ES LA CONDICIONAL
     PRUEBA CON ELIMINAR LOS ELEMENTOS DE RECURSOS, QUE AL FINAL SOLO QUEDE UN ELEMENTO
     -->
       <div> <!-- *ngIf="pregunta.etiqueta==indice" -->

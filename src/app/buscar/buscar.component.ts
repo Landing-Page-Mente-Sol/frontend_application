@@ -39,7 +39,10 @@ export class BuscarComponent implements OnInit {
 
     this.recurso_buscar=[] as Recursos_Buscar[];
     this.recursosBuscarService.getAll().subscribe((response:any)=>{this.recurso_buscar=response});
+
   }
+
+  item_buscar=localStorage.getItem("item_buscar");
 
 
   ngOnInit(): void {
@@ -49,6 +52,7 @@ export class BuscarComponent implements OnInit {
     this.recursosService.create({"id":0,"numero":k}).subscribe((aux)=>console.log(aux));
   }
   filtro: boolean=false;
+
   funcionfiltro(){
     this.asignaturas.forEach(element => {
       if(element.curso==this.recurso_buscar[this.recurso_buscar.length-1].buscar){
