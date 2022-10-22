@@ -20,6 +20,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.component";
+import {ChangePasswordComponent} from "./users/pages/change-password/change-password.component";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.
     CustomValidatorDirective,
     SignInComponent,
     SignUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
