@@ -1,0 +1,40 @@
+{{recursos[this.recursos.length-1].numero}}
+<div class="ventana_respuestas">
+  <div class="contenedor_titulo_respuesta centrar_h">
+    <div class="titulo centrar_h">
+      {{preguntas[recursos[this.recursos.length-1].numero].titulo}}
+    </div>
+    <div class="sub_text">{{preguntas[recursos[this.recursos.length-1].numero].fecha}}</div>
+  </div>
+
+  <div>
+    <div class="encabezado_preguntas">
+      <div class="titulo_2 centrar_v centrar_l">Publicado por:</div>
+      <div class="sub_text centrar_v centrar_r">{{preguntas[recursos[this.recursos.length-1].numero].autor}}</div>
+      <button class="etiqueta centrar_v centrar_l">
+        <img class="centrar_v" src={{asignaturas[preguntas[recursos[this.recursos.length-1].numero].etiqueta].imagen}} style="width: 45px; height:40px">
+        <p class="centrar_v titulo_pregunta">{{asignaturas[preguntas[recursos[this.recursos.length-1].numero].etiqueta].curso}}</p>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- INICIO RESPUESTA TARGET -->
+  <div *ngFor="let respuesta of preguntas[recursos[this.recursos.length-1].numero].respuestas">
+    <div class="contenedor_target_respuesta">
+      <div class="encabezado_target_pregunta">
+        <div class="titulo_2 centrar_l">Respuesta de:</div>
+        <div class="sub_text">{{respuesta.autor}}</div>
+        <div class="sub_text">{{respuesta.fecha}}</div>
+      </div>
+      <div class="titulo_2">{{respuesta.descripcion}}</div>
+    </div>
+  </div>
+  <!-- FIN RESPUESTA TARGET -->
+  <h2>Cuerpo o descripcion de la respuesta</h2>
+  <textarea type="text" class="input_descripcion" [(ngModel)]="contenido"></textarea>
+  <a href="agregar_respuesta" class="decoration" (click)="agregar_respuesta(contenido)">
+
+    <div class="boton responder" >Responder</div>
+  </a>
+</div>

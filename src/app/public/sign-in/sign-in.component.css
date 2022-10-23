@@ -1,0 +1,29 @@
+.mat-grid-list {
+  height: 10rem;
+}
+
+.separator {
+  border-top: 3px solid black;
+  width: 45%;
+  margin:  auto;
+}
+
+.register {
+  margin-bottom: 1rem;
+}
+
+.forgot-password, .maintain-login {
+  flex: 1;
+}
+
+.forgot-password {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.maintain-login {
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+

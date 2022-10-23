@@ -1,0 +1,96 @@
+
+<div *ngIf="!registerInformation" class="card-container complete-view-port">
+  <mat-card class="card">
+    <div class="complete-width text-center">
+      <mat-card-title>Join us EasyBrain</mat-card-title>
+      <div class="description">
+        <p>
+          Create an account to clear up any doubts you may have on your topics of interest.
+        </p>
+      </div>
+      <mat-card-title>Sign Up</mat-card-title>
+    </div>
+    <mat-card-content>
+      <mat-radio-group [(ngModel)]="userType" class="complete-width flex text-center">
+        <mat-radio-button class="type-option" color="primary" *ngFor="let button of radioButtons" [value]="button.value"> {{ button.label }}</mat-radio-button>
+      </mat-radio-group>
+      <div class="complete-width flex text-center">
+        <hr class="separator"/>
+        o
+        <hr class="separator"/>
+      </div>
+
+      <form (submit)="onSubmit('email')" #emailForm="ngForm">
+        <mat-form-field class="complete-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input (keydown)="emailKeyDown()" matInput required email [(ngModel)]="userEmail" name="email" type="email" />
+          <mat-error *ngIf="hasError('email', 'required', emailForm)">Email is <strong>required</strong></mat-error>
+          <mat-error *ngIf="hasError('email', 'email', emailForm)">Please, insert a <strong>valid email</strong></mat-error>
+          <mat-error *ngIf="hasError('email', 'existEmail', emailForm)">This email is already registered</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-card-actions class="text-center">
+          <button mat-flat-button type="submit" color="primary">Register</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+    <mat-card-footer class="text-center">
+      <small>We will not send you spam. We value your privacy</small>
+      <div class="login flex">
+        <span>Already have an account?</span>
+        <a [routerLink]="'/sign-in'" class="form-link">Sign in</a>
+      </div>
+      <div class="use-terms">
+        <small>By registering, you agree to EasyBrain's Terms of Service and Privacy Policy.</small>
+      </div>
+    </mat-card-footer>
+
+  </mat-card>
+</div>
+
+<!-- Register information Form -->
+<div *ngIf="registerInformation" class="form-container complete-view-port">
+  <mat-card class="form-card">
+    <div class="complete-width">
+      <mat-card-title class="text-center">Join us EasyBrain</mat-card-title>
+      <mat-card-subtitle class="text-center">Fill this form</mat-card-subtitle>
+      <div class="to-back"><a class="form-link " (click)="registerInformation = !registerInformation">Back</a></div>
+    </div>
+
+    <form (submit)="onSubmit()" #signUpForm="ngForm">
+      <mat-card-content>
+        <mat-grid-list [cols]="formCols" rowHeight="fit">
+          <mat-grid-tile *ngFor="let field of formFields">
+            <mat-form-field appearance="fill" class="complete-width">
+              <mat-label>{{ field.label }}</mat-label>
+              <input (keydown)="keyDown(field)" (change)="onChangeField(field)" [placeholder]="field.placeholder" [name]="field.field"
+                     matInput  [type]="field.type" [(ngModel)]="field.value" [maxlength]="field.field === 'upcCode' ? 10 : 150"
+                     [required]="field.requerid" [minlength]="field.minLength!"  />
+
+              <mat-error *ngIf="hasError(field.field, 'required')">{{field.label}} is <strong>required</strong></mat-error>
+              <mat-error *ngIf="hasError(field.field, 'notCorrectPassword')">Not is the <strong>same password</strong></mat-error>
+              <mat-error *ngIf="hasError(field.field, 'pattern')"><strong>Not valid</strong> UPC code</mat-error>
+              <mat-error *ngIf="hasError(field.field, 'minlength')">{{ field.label }} must be large than <strong>{{ field.minLength }} characters</strong></mat-error>
+              <mat-error *ngIf="hasError(field.field, 'usernameExist')">The username {{ field.value }} <strong>already exist</strong></mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+        <button class="form-button" color="primary" mat-flat-button type="submit">Register</button>
+      </mat-card-actions>
+    </form>
+
+    <mat-card-footer class="text-center">
+        <div class="login flex">
+          <span>Already have an account?</span>
+          <a [routerLink]="'/sign-in'" class="form-link">Sign in</a>
+        </div>
+        <div class="use-terms">
+          <small>By registering, you agree to EasyBrain's Terms of Service and Privacy Policy.</small>
+        </div>
+    </mat-card-footer>
+  </mat-card>
+</div>
