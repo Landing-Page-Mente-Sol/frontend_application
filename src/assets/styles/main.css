@@ -1,0 +1,43 @@
+.one-rem-padding {
+  padding: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.complete-width {
+  width: 100%;
+}
+
+.flex, .flex-column {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.complete-view-port {
+  height: 100vh;
+}
+
+.grid, .two-grid-column {
+  display: grid;
+}
+
+.one-rem-gap {
+  gap: 1rem;
+}
+
+.two-rem-gap {
+  gap: 2rem;
+}
+
+.three-rem-gap {
+  gap: 3rem;
+}
+
+.two-grid-column {
+  grid-template-columns: 1fr 1fr;
+}

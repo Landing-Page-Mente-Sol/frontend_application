@@ -1,0 +1,20 @@
+<div class="aux">
+  <div class="encabezado_contenedor">
+    <div class="logo centrar_v">
+      <a href="home" >EasyBrain</a>
+    </div>
+    <div class="search centrar_v centrar_h">
+      <input class="encabezado_item buscador" type="text" placeholder="Que es lo que buscas?"
+      [(ngModel)]="buscar">
+      <a href="buscar">
+        <button class="boton boton2 centrar_h" (click)="buscar_f(buscar)">
+          Buscarf
+        </button>
+      </a>
+
+    </div>
+    <button class="encabezado_item boton centrar_v">¿Quieres ser tutor?</button>
+  </div>
+  <div class="franja"></div>
+</div>
+

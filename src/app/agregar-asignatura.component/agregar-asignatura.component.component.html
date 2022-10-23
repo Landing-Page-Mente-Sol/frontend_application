@@ -1,0 +1,22 @@
+<div class="Question">
+  <div>
+      <div class="Titulo">
+          <h1><strong>Agregar asignatura</strong></h1>
+          <hr>
+      </div>
+      <div>
+          <h2>Nombre de la nueva asignatura</h2>
+          <input type="text" class="input_titulo" placeholder="Escriba el nombre de la nueva asignatura" [(ngModel)]="nombre_asignatura"/>
+
+      </div>
+
+
+      <a href="home">
+        <button class="boton" (click)="agregar_asignatura(nombre_asignatura)">
+          Agregar Asignatura
+        </button>
+      </a>
+
+
+  </div>
+</div>
