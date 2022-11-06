@@ -6,7 +6,6 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import {CustomAsyncValidatorDirective} from "./shared/directives/custom-async-validator.directive";
 import {CustomValidatorDirective} from "./shared/directives/custom-validator.directive";
 import { SignInComponent } from './public/sign-in/sign-in.component';
@@ -26,7 +25,6 @@ import {ChangePasswordComponent} from "./users/pages/change-password/change-pass
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     CustomAsyncValidatorDirective,
     CustomValidatorDirective,
     SignInComponent,

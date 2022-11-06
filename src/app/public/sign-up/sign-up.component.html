@@ -12,7 +12,7 @@
     </div>
     <mat-card-content>
       <mat-radio-group [(ngModel)]="userType" class="complete-width flex text-center">
-        <mat-radio-button class="type-option" color="primary" *ngFor="let button of radioButtons" [value]="button.value"> {{ button.label }}</mat-radio-button>
+        <mat-radio-button class="type-option" (click)="selectUsertype()" color="primary" *ngFor="let button of radioButtons" [value]="button.value"> {{ button.label }}</mat-radio-button>
       </mat-radio-group>
       <div class="complete-width flex text-center">
         <hr class="separator"/>
@@ -20,6 +20,7 @@
         <hr class="separator"/>
       </div>
 
+      <!-- Initial form -> user type and user email -->
       <form (submit)="onSubmit('email')" #emailForm="ngForm">
         <mat-form-field class="complete-width" appearance="fill">
           <mat-label>Email</mat-label>
@@ -27,6 +28,7 @@
           <mat-error *ngIf="hasError('email', 'required', emailForm)">Email is <strong>required</strong></mat-error>
           <mat-error *ngIf="hasError('email', 'email', emailForm)">Please, insert a <strong>valid email</strong></mat-error>
           <mat-error *ngIf="hasError('email', 'existEmail', emailForm)">This email is already registered</mat-error>
+          <mat-error *ngIf="hasError('email', 'notUserTypeSelected', emailForm)">Please, select a user type</mat-error>
         </mat-form-field>
 
 
@@ -65,8 +67,8 @@
           <mat-grid-tile *ngFor="let field of formFields">
             <mat-form-field appearance="fill" class="complete-width">
               <mat-label>{{ field.label }}</mat-label>
-              <input (keydown)="keyDown(field)" (change)="onChangeField(field)" [placeholder]="field.placeholder" [name]="field.field"
-                     matInput  [type]="field.type" [(ngModel)]="field.value" [maxlength]="field.field === 'upcCode' ? 10 : 150"
+              <input (keydown)="keyDown(field)" [placeholder]="field.placeholder" [name]="field.field"
+                     matInput  [type]="field.type" [(ngModel)]="field.value" [maxlength]="field.maxLength!"
                      [required]="field.requerid" [minlength]="field.minLength!"  />
 
               <mat-error *ngIf="hasError(field.field, 'required')">{{field.label}} is <strong>required</strong></mat-error>
