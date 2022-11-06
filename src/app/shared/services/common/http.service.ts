@@ -11,7 +11,7 @@ import { QueryString } from "../../util/query-string";
 })
 export class HttpService<Type> {
 
-  basePath = "http://localhost:3000/api/v1";
+  basePath = "http://localhost:8080/api/v1";
   httpOptions = { headers: new HttpHeaders({"Content-Type":"application/json"})};
   constructor(protected http: HttpClient) { }
 
@@ -22,6 +22,7 @@ export class HttpService<Type> {
       //Unsuccessful response Error Code returned from Backend
       console.error(`Backend returned error ${ error.status }, body was: ${ error.error }`);
     }
+
     //Return Observable with Error Message to Client
     return throwError("Something happened with request, please try again later");
   }
@@ -62,6 +63,21 @@ export class HttpService<Type> {
     return this.http.get<Type[]>(`${this.basePath}/${query.toQueryString()}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError))
 
+  }
+
+  exchangeCreate(url: string, item: any): Observable<Type> {
+    return this.http.post<Type>(this.basePath + url, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  /*
+  * url is added to base url
+  * if url must be as /search/username/{username}
+  * the consult will do as basePath + /search/username/{username}
+  * */
+  exchangeGet(url: string): Observable<Type[]> | Observable<Type>{
+    return this.http.get<Type[]>(this.basePath + url, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 }
 

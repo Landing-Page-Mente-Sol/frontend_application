@@ -5,6 +5,8 @@ import {everError, notIsEqualsTo} from "../../shared/util/validators";
 import {UsersService} from "../../shared/services/users.service";
 import {Router} from "@angular/router";
 import {User} from "../../shared/models/user";
+import {Account} from "../../shared/models/account";
+import {AccountsService} from "../../shared/services/accounts.service";
 
 interface RadioButton {
   value: string,
@@ -27,34 +29,37 @@ export class SignUpComponent implements OnInit {
   successfulRoute: string = '/sign-in'
   registerInformation: boolean = false;
 
-  formCols: number = 1;
+  formCols: number = 2;
   formFields: FieldForm[] = [
     {
-      field: 'name',
+      field: 'firstname',
       label: 'Name',
       placeholder: 'Example Name',
       type: 'text',
       requerid: true,
       value: '',
-      minLength: 0
+      minLength: 0,
+      maxLength: 150
     },
     {
-      field: 'lastName',
+      field: 'lastname',
       label: 'Last Name',
       placeholder: 'Example Lastname',
       type: 'text',
       requerid: true,
       value: '',
-      minLength: 0
+      minLength: 0,
+      maxLength: 150
     },
     {
       field: 'username',
       label: 'Username',
       placeholder: 'exampledr',
       type: 'text',
-      requerid: false,
+      requerid: true,
       value: '',
-      minLength: 0
+      minLength: 4,
+      maxLength: 150
     },
     {
       field: 'upcCode',
@@ -63,7 +68,28 @@ export class SignUpComponent implements OnInit {
       type: 'text',
       requerid: true,
       value: '',
-      minLength: 0
+      minLength: 0,
+      maxLength: 10
+    },
+    {
+      field: 'career',
+      label: 'Career',
+      placeholder: 'Ingeniería de Software',
+      type: 'text',
+      requerid: true,
+      value: '',
+      minLength: 0,
+      maxLength: 150
+    },
+    {
+      field: 'cycle',
+      label: 'Career cycle',
+      placeholder: '1',
+      type: 'text',
+      requerid: true,
+      value: '',
+      minLength: 1,
+      maxLength: 2
     },
     {
       field: 'password',
@@ -73,7 +99,8 @@ export class SignUpComponent implements OnInit {
       requerid: true,
       value: '',
       minLength: 8,
-      hide: true
+      hide: true,
+      maxLength: 150
     },
     {
       field: 'confirmPassword',
@@ -83,10 +110,12 @@ export class SignUpComponent implements OnInit {
       requerid: true,
       value: '',
       minLength: 0,
-      hide: true
+      hide: true,
+      maxLength: 150
     }
   ]
   userData: User = {} as User;
+  accountData: Account = {} as Account;
 
   radioButtons: RadioButton[] = [
     {value: 'tutor', label: 'Tutor'},
@@ -95,24 +124,30 @@ export class SignUpComponent implements OnInit {
   userType: string = '';
   userEmail: string = '';
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private accountsService: AccountsService) { }
 
   ngOnInit(): void {
   }
 
+  validateUserType() {
+    if(this.userType === '')
+      this.putError('email', 'notUserTypeSelected', this.emailForm)
+  }
+
   onSubmit(where: string = 'information') {
     if(where !== 'information'){
+      this.validateUserType();
       if(this.userType !== '' && this.emailForm.valid){
-        this.usersService.getByField('email', this.userEmail).subscribe(
-          (response)=> response.length === 0 ? this.registerInformation = true : this.putError('email', 'existEmail', this.emailForm))
+        this.usersService.getByEmail(this.userEmail).subscribe(
+          (response)=> response ? this.putError('email', 'existEmail', this.emailForm): this.registerInformation = true)
       }
     } else {
       if(this.signUpForm.valid) {
         this.confirmPassword();
         this.validateUpcCode();
         if(this.signUpForm.valid){
-          this.usersService.getByField('username', this.controlValue('username')).subscribe(
-            (response)=> response.length !== 0 ? this.putError('username', 'usernameExist') : this.registerUser()
+          this.accountsService.getByUsername(this.controlValue('username')).subscribe(
+            (response)=> response ? this.putError('username', 'usernameExist') : this.registerUser()
           )
         }
       }
@@ -130,6 +165,7 @@ export class SignUpComponent implements OnInit {
 
   emailKeyDown() {
     this.emailForm.controls['email'].clearValidators();
+
     this.emailForm.controls['email'].setValidators([Validators.required, Validators.email])
   }
 
@@ -142,8 +178,6 @@ export class SignUpComponent implements OnInit {
     return form?.controls[controlName]?.value;
   }
 
-  onChangeField(field: FieldForm) {
-  }
 
   hasError(controlName: string, errorCode: string, form: NgForm = this.signUpForm): boolean {
     return form?.controls[controlName]?.hasError(errorCode);
@@ -160,18 +194,34 @@ export class SignUpComponent implements OnInit {
   }
 
   registerUser() {
-    this.userData.name = this.controlValue('name');
-    this.userData.lastName = this.controlValue('lastName');
-    this.userData.password = this.controlValue('password');
-    this.userData.username = this.controlValue('username');
+    this.userData.firstname = this.controlValue('firstname');
+    this.userData.lastname = this.controlValue('lastname');
+
     this.userData.upcCode = this.controlValue('upcCode');
     this.userData.email = this.userEmail;
-    this.userData.type = this.userType;
+    this.userData.userType = this.userType;
     this.userData.id = 0;
+    if(this.userType === 'tutor')
+      this.userData.points = 0;
+
+    //account data
+    this.accountData.password = this.controlValue('password');
+    this.accountData.username = this.controlValue('username');
+
 
     this.usersService.create(this.userData).subscribe(
-      (response)=> response ? this.router.navigateByUrl(this.successfulRoute) : this.userData = {} as User
+      (response)=> response ? this.createAccount(response) : this.userData = {} as User
     );
   }
 
+  createAccount(user: User) {
+    this.accountsService.exchangeCreate("/" + user.id, this.accountData).subscribe(response => response ? this.router.navigateByUrl(this.successfulRoute) : console.log('account not created'));
+  }
+
+  selectUsertype() {
+    if(this.hasError('email', 'notUserTypeSelected', this.emailForm)) {
+      this.emailForm.controls['email'].clearValidators();
+      this.emailForm.controls['email'].updateValueAndValidity();
+    }
+  }
 }
