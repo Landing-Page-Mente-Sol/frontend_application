@@ -201,8 +201,8 @@ export class SignUpComponent implements OnInit {
     this.userData.email = this.userEmail;
     this.userData.userType = this.userType;
     this.userData.id = 0;
-    if(this.userType === 'tutor')
-      this.userData.points = 0;
+    this.userData.points = 0;
+    this.userData.career = this.controlValue('career');
 
     //account data
     this.accountData.password = this.controlValue('password');
