@@ -31,6 +31,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.component";
 import {ChangePasswordComponent} from "./users/pages/change-password/change-password.component";
+import {NotFoundComponent} from "./public/not-found/not-found.component";
 
 
 
@@ -51,7 +52,8 @@ import {ChangePasswordComponent} from "./users/pages/change-password/change-pass
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

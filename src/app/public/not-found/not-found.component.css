@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.not-found {
+  text-align: center;
+  margin: auto 1rem;
+}
