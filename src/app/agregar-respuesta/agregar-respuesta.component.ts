@@ -34,13 +34,14 @@ export class AgregarRespuestaComponent implements OnInit {
 
 
     this.answerService.getAll().subscribe((response:any)=>{
-      this.answers=response;
+      this.answers = response;
     })
     // this.indice=this.recursos[this.recursos.length-1].numero;
     // this.recursosService.delete(1).subscribe();
     ;
-    this.id_question=localStorage.getItem("id_question");
+    this.id_question = localStorage.getItem("id_question");
     this.id_question=parseInt(this.id_question);
+    console.log(this.id_question);
     this.questionService.getById(this.id_question).subscribe(response=>this.pregunta=response);
   }
 

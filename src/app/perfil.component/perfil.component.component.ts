@@ -13,7 +13,7 @@ export class PerfilComponentComponent implements OnInit {
   {
 
     this.user = {} as User;
-    this.userService.getById(localStorage.getItem("user")!).subscribe((response:any)=>{
+    this.userService.getById(localStorage.getItem("user")!).subscribe((response)=>{
       this.user=response;
     })
   }

@@ -25,7 +25,7 @@ export class AsignaturasComponentComponent implements OnInit {
   }
 
   filtro_asignatura(i:number){
-    localStorage.setItem("id_question",i.toString());
+    localStorage.setItem("id_question", i.toString());
   }
 
 }
