@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { User } from '../shared/models/user';
+import { UsersService } from '../shared/services/users.service';
 @Component({
   selector: 'app-perfil-barra',
   templateUrl: './perfil-barra.component.component.html',
@@ -7,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilBarraComponentComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+  constructor(private userService: UsersService)
+  {
+
+    this.user = {} as User;
+    this.userService.getById(localStorage.getItem("user")!).subscribe((response:any)=>{
+      this.user=response;
+    })
+  }
+
   imprimir='';
   ngOnInit(): void {
   }
+
+
   respuestas=5;
   brainPoints=13;
   brainLikes=43;

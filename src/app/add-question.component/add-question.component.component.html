@@ -18,9 +18,9 @@
             <div *ngFor="let asignatura of asignaturas; index as i">
                 <div>
 
-                    <button class="item_asignatura" (click)="set_id(i)">
-                        <img src={{asignatura.imagen}}>
-                        <span>{{asignatura.curso}}</span>
+                    <button class="item_asignatura" (click)="set_id(asignatura.id)">
+                        <img src={{asignatura.image}}>
+                        <span>{{asignatura.name}}</span>
                     </button>
                 </div>
             </div>

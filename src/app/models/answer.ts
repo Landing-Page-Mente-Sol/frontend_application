@@ -1,7 +1,11 @@
+import { Course } from "./course"
+import { Question } from "./question"
+import { User } from "../shared/models/user"
+
 export interface Answer {
-  descripcion: string,
-  fecha: Date|string,
-  autor: string,
-  index_pregunta: number
+  description: string,
+  madeAt: Date|string,
+  user: User,
+  question: Question,
   id: number
 }

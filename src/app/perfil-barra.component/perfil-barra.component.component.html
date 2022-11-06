@@ -3,8 +3,8 @@
   <a href="perfil" class="decoration">
     <div class="titulo_perfil">
       <img src="../assets/images/user.png">
-      <div class="titulo">Jerry Quispe Gavilan</div>
-  
+      <div class="titulo">{{user.firstname}} {{user.lastname}}</div>
+
     </div>
   </a>
 
@@ -17,7 +17,7 @@
           Respuestas
         </div>
         <div class="valor">
-          {{respuestas}}
+          {{user.points}}
         </div>
       </div>
 
@@ -26,7 +26,7 @@
           BrainPoints
         </div>
         <div class="valor">
-          {{brainPoints}}
+          {{user.points}}
         </div>
       </div>
 
@@ -36,7 +36,7 @@
           BrainLikes
         </div>
         <div class="valor">
-          {{brainLikes}}
+          {{user.points}}
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           Carrera
         </div>
         <div class="valor">
-          {{carrera}}
+          {{user.career}}
         </div>
       </div>
 
@@ -54,7 +54,7 @@
           Ranking
         </div>
         <div class="valor">
-          {{ranking}}
+          {{user.points}}
         </div>
       </div>
 
@@ -63,7 +63,7 @@
           Codigo
         </div>
         <div class="valor">
-          {{codigo}}
+          {{user.upcCode}}
         </div>
       </div>
 
@@ -72,7 +72,7 @@
           Role
         </div>
         <div class="valor">
-          {{role}}
+          {{user.userType}}
         </div>
       </div>
       <hr>

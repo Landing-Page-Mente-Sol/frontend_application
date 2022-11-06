@@ -7,7 +7,7 @@
             <img class="centrar_v" src="./assets/images/Campana.png"/>
         </div>
         <div>
-            <button class="rol titulo_2" >{{role}}</button>
+            <button class="rol titulo_2" >{{user.userType}}</button>
         </div>
         <div>
           <div style="margin-bottom:2rem;">
@@ -20,17 +20,17 @@
 
             <div class="tex_normal">
                 <p class="sub_tex">Respuesta</p>
-                <p>{{respuestas}}</p>
+                <p>{{user.points}}</p>
             </div>
 
             <div class="tex_normal">
                 <p class="sub_tex">Me gusta</p>
-                <p>{{brainLikes}}</p>
+                <p>{{user.points}}</p>
             </div>
 
             <div class="tex_normal">
                 <p class="sub_tex">Seguidores</p>
-                <p>{{brainPoints}}</p>
+                <p>{{user.points}}</p>
             </div>
 
         </div>
@@ -38,17 +38,17 @@
 
           <div class="tex_normal">
               <p class="sub_tex">Carrera</p>
-              <p>{{carrera}}</p>
+              <p>{{user.career}}</p>
           </div>
 
           <div class="tex_normal">
               <p class="sub_tex">Ranking</p>
-              <p>#{{ranking}}</p>
+              <p>#{{user.points}}</p>
           </div>
 
           <div class="tex_normal">
               <p class="sub_tex">Codigo</p>
-              <p>{{codigo}}</p>
+              <p>{{user.upcCode}}</p>
           </div>
 
       </div>

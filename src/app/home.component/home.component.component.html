@@ -27,16 +27,16 @@
         <div class="encabezado_card_pregunta">
           <img src="../assets/images/user.png">
           <button class="etiqueta centrar_v">
-            <img class="centrar_v" src={{asignaturas[pregunta.etiqueta].imagen}} style="width: 45px; height:40px">
-            <p class="centrar_v titulo_pregunta">{{asignaturas[pregunta.etiqueta].curso}}</p>
+            <img class="centrar_v" src={{pregunta.course.image}} style="width: 45px; height:40px">
+            <p class="centrar_v titulo_pregunta">{{pregunta.course.name}}</p>
           </button>
-          <div class="fecha_pregunta centrar_v">{{pregunta.fecha}}</div>
+          <div class="fecha_pregunta centrar_v">{{pregunta.madeAt}}</div>
         </div>
         <div>
-          <p class="titulo_2">{{pregunta.titulo}}</p>
-          <p class="centrar_h titulo_pregunta">{{pregunta.descripcion}}</p>
+          <p class="titulo_2">{{pregunta.title}}</p>
+          <p class="centrar_h titulo_pregunta">{{pregunta.description}}</p>
 
-          <a href="agregar_respuesta" class="decoration" (click)="responder(e)">
+          <a href="agregar_respuesta" class="decoration" (click)="responder(pregunta.id)">
             <div class="boton centrar_h" style="margin-top: 2rem; margin-bottom: 1rem;">
             Responder
             </div>

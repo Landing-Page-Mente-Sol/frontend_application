@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from '../services/courses.service';
+import { CoursesService } from '../shared/services/courses.service';
 
 @Component({
   selector: 'app-agregar-asignatura',
@@ -16,6 +16,8 @@ export class AgregarAsignaturaComponentComponent implements OnInit {
   nombre_asignatura:string='';
   agregar_asignatura(nuevo:string){
     console.log(nuevo);
-    this.couseService.create({"id":0,"curso":nuevo, "imagen":"./assets/images/new.png"}).subscribe((aux)=>console.log(aux));
+    this.couseService.create(
+      {"name":nuevo, "image":"./assets/images/new.png"})
+      .subscribe((aux)=>console.log(aux));
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { User } from '../shared/models/user';
+import { UsersService } from '../shared/services/users.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.component.html',
@@ -7,16 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponentComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+  constructor(private userService: UsersService)
+  {
 
+    this.user = {} as User;
+    this.userService.getById(localStorage.getItem("user")!).subscribe((response:any)=>{
+      this.user=response;
+    })
+  }
   ngOnInit(): void {
   }
 
-  respuestas=5;
-  brainPoints=13;
-  brainLikes=43;
-  carrera="Ing. Software";
-  ranking=13;
-  codigo="A20201A53";
-  role="Student";
+
 }

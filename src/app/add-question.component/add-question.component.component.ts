@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from '../services/courses.service';
+import { CoursesService } from '../shared/services/courses.service';
 import { Course} from "../models/course";
 import { Question } from "../models/question";
-import { QuestionsService } from "../services/questions.service";
+import { QuestionsService } from '../shared/services/questions.service';
 import { Answer } from '../models/answer';
 @Component({
   selector: 'app-add-question',
@@ -26,27 +26,40 @@ export class AddQuestionComponentComponent implements OnInit {
   descripcion="";
   etiqueta:any=null;
   fecha="";
-  autor="Jerry Quispe Gavilan";
+  // autor="Jerry Quispe Gavilan";
   respuestas=[];
+  course:Course= {id: -1,
+  name: "",
+  image: ""}
   set_id(i:number){
     this.etiqueta=i;
     console.log(this.etiqueta);
+    this.course.id=i;
   }
 
+buscar_autor()
+{
+
+}
 
   publicar_pregunta(descripcion:string,titulo:string){
-this.questionService.create(
-  {
-      "id":0,
-      "mostrar":false,
-      "etiqueta":this.etiqueta,
-      "descripcion": descripcion,
-      "titulo":titulo,
-      "fecha": new Date(),
-      "autor":this.autor,
-      "respuestas":[] as Answer[]
-  }
-  ).subscribe((aux)=>console.log(aux));
+    this.questionService.createQuestion(
+      this.course.id,
+      localStorage.getItem("user")!,
+      {"description": descripcion,
+    "title":titulo,
+    "madeAt": new Date()}
+    ).subscribe();
+// this.questionService.create(
+//   {
+//     "description": descripcion,
+//     "title":titulo,
+//     "madeAt": new Date(),
+//     "user":localStorage.getItem("user"),
+//     "course":this.course,
+//     "id":0
+//   }
+//   ).subscribe((aux)=>console.log(aux));
 }
 
   // "id": 0, auto
