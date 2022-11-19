@@ -13,6 +13,7 @@ import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.
 import {ChangePasswordComponent} from "./users/pages/change-password/change-password.component";
 import {NotFoundComponent} from "./public/not-found/not-found.component";
 import {RankingComponent} from "./users/pages/ranking/ranking.component";
+import {EditProfileComponent} from "./users/pages/edit-profile/edit-profile.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponentComponent},
   {path: 'add_pregunta', component:AddQuestionComponentComponent},
   {path:'add-asignatura', component:AgregarAsignaturaComponentComponent},
-  {path:'perfil',component:PerfilComponentComponent},
+  {path:'profile',component:PerfilComponentComponent},
   {path:'buscar',component:BuscarComponent},
   {path:'agregar_respuesta', component:AgregarRespuestaComponent},
   {
@@ -47,8 +48,11 @@ const routes: Routes = [
   {
     path: 'ranking',
     component: RankingComponent
-  }
-  ,
+  },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent
+  },
   {
     path: '**',
     pathMatch: 'full',

@@ -1,59 +1,59 @@
-<div class="cont">
-  <button class="target_perfil">
-    <div>
-        <div class="encabezado_target_perfil">
-            <img class="centrar_l centrar_v" src="./assets/images/usuario.png" alt=""/>
-            <h1 class="centrar_r centrar_v">Brother1234</h1>
-            <img class="centrar_v" src="./assets/images/Campana.png"/>
-        </div>
-        <div>
-            <button class="rol titulo_2" >{{user.userType}}</button>
-        </div>
-        <div>
-          <div style="margin-bottom:2rem;">
-              <h2 class="centrar_r">Acerca de</h2>
-              <hr>
-          </div>
-
+<div class="form-container">
+  <mat-card class="profile-card">
+    <mat-card-header class="complete-width">
+      <img src="./assets/images/usuario.png" alt="profile image"/>
+      <div class="flex profile">
+        <h1>{{ username }}</h1>
+        <img height="18" src="./assets/images/Campana.png" alt="notifications" />
       </div>
-        <div class="column_3 centrar_h">
-
-            <div class="tex_normal">
-                <p class="sub_tex">Respuesta</p>
-                <p>{{user.points}}</p>
-            </div>
-
-            <div class="tex_normal">
-                <p class="sub_tex">Me gusta</p>
-                <p>{{user.points}}</p>
-            </div>
-
-            <div class="tex_normal">
-                <p class="sub_tex">Seguidores</p>
-                <p>{{user.points}}</p>
-            </div>
-
-        </div>
-        <div class="column_3 centrar_h">
-
-          <div class="tex_normal">
-              <p class="sub_tex">Carrera</p>
-              <p>{{user.career}}</p>
-          </div>
-
-          <div class="tex_normal">
-              <p class="sub_tex">Ranking</p>
-              <p>#{{user.points}}</p>
-          </div>
-
-          <div class="tex_normal">
-              <p class="sub_tex">Codigo</p>
-              <p>{{user.upcCode}}</p>
-          </div>
-
+    </mat-card-header>
+    <br />
+    <mat-card-content>
+      <div class="text-center">
+        <button class="rol"> {{ userType(user.userType) }} </button>
       </div>
-    </div>
+      <div class="about text-center">
+        <h2>About</h2>
+        <hr />
+        <div class="three-grid-column">
+          <div class="item">
+            <p>Answers</p>
+            <p>{{userInformation.answers}}</p>
+          </div>
+          <div class="item">
+            <p>Likes</p>
+            <p>{{userInformation.likes}}</p>
+          </div>
 
-  </button>
+          <div class="item">
+            <p >Followers</p>
+            <p>{{userInformation.followers}}</p>
+          </div>
+
+          <div class="item">
+            <p>Career</p>
+            <p>{{ user.career }}</p>
+          </div>
+
+          <div class="item">
+            <p>Ranking</p>
+            <p>#{{ userInformation.ranking }}</p>
+          </div>
+
+          <div class="item">
+            <p>Upc Code</p>
+            <p>{{ user.upcCode }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="text-center">
+      <button color="primary" class="form-button" mat-flat-button routerLink="/edit-profile">Edit profile</button>
+      <button color="primary" class="form-button" mat-flat-button routerLink="/change-password">Change password</button>
+    </mat-card-actions>
+
+  </mat-card>
+
 </div>
 

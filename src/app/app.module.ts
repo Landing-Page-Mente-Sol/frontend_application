@@ -36,6 +36,7 @@ import { RankingComponent } from './users/pages/ranking/ranking.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import { EditProfileComponent } from './users/pages/edit-profile/edit-profile.component';
 
 
 
@@ -58,7 +59,8 @@ import {MatSortModule} from "@angular/material/sort";
     ForgotPasswordComponent,
     ChangePasswordComponent,
     NotFoundComponent,
-    RankingComponent
+    RankingComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

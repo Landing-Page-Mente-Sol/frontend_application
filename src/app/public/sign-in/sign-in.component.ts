@@ -59,6 +59,7 @@ export class SignInComponent implements OnInit {
 
   login(account: Account) {
     localStorage.setItem('user', account.user.id.toString());
+    localStorage.setItem('username', account.username);
     this.route.navigateByUrl(this.loginRoute).then()
   }
 
