@@ -22,7 +22,7 @@
   height: 100vh;
 }
 
-.grid, .two-grid-column {
+.grid, .two-grid-column, .three-grid-column {
   display: grid;
 }
 
@@ -40,4 +40,8 @@
 
 .two-grid-column {
   grid-template-columns: 1fr 1fr;
+}
+
+.three-grid-column {
+  grid-template-columns: repeat(3,1fr);
 }

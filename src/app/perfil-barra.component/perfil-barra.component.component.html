@@ -1,85 +1,42 @@
-<div class="perfil_contenedor">
-
-  <a href="perfil" class="decoration">
-    <div class="titulo_perfil">
-      <img src="../assets/images/user.png">
-      <div class="titulo">{{user.firstname}} {{user.lastname}}</div>
-
-    </div>
-  </a>
-
-  <div class="datos_perfil_contenedor">
-
-    <div>
-
-      <div class="datos_perfil_item">
-        <div class="llave">
-          Respuestas
+<div class="profile-container complete-width grid one-rem-gap">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <img class="profile-image" routerLink="/profile" src="../../assets/images/user.png" alt="user profile">
+      <span>{{ user.firstname }}</span>
+    </mat-card-header>
+    <br />
+    <mat-card-content >
+      <div class="grid one-rem-gap">
+        <div class="flex one-rem-gap">
+          <span>Answers</span> <span>{{userInformation.answers}}</span>
         </div>
-        <div class="valor">
-          {{user.points}}
-        </div>
-      </div>
 
-      <div class="datos_perfil_item">
-        <div class="llave">
-          BrainPoints
+        <div class="flex one-rem-gap">
+          <span>Brain Points</span> <span> {{ user.points }}</span>
         </div>
-        <div class="valor">
-          {{user.points}}
-        </div>
-      </div>
 
-
-      <div class="datos_perfil_item">
-        <div class="llave">
-          BrainLikes
+        <div class="flex one-rem-gap">
+          <span>Brain Likes</span> <span> {{ userInformation.likes }}</span>
         </div>
-        <div class="valor">
-          {{user.points}}
+
+        <div class="flex one-rem-gap">
+          <span>Career</span> <span> {{ user.career }}</span>
+        </div>
+
+        <div class="flex one-rem-gap">
+          <span>Ranking</span> <span> {{ userInformation.ranking }}</span>
+        </div>
+
+        <div class="flex one-rem-gap">
+          <span>Code</span> <span> {{ user.upcCode }}</span>
         </div>
       </div>
-
-      <div class="datos_perfil_item">
-        <div class="llave">
-          Carrera
-        </div>
-        <div class="valor">
-          {{ user.career }}
-        </div>
-      </div>
-
-      <div class="datos_perfil_item">
-        <div class="llave">
-          Ranking
-        </div>
-        <div class="valor">
-          {{user.points}}
-        </div>
-      </div>
-
-      <div class="datos_perfil_item">
-        <div class="llave">
-          Codigo
-        </div>
-        <div class="valor">
-          {{user.upcCode}}
-        </div>
-      </div>
-
-      <div class="datos_perfil_item">
-        <div class="llave">
-          Role
-        </div>
-        <div class="valor">
-          {{user.userType}}
-        </div>
-      </div>
-      <hr>
-
-    </div>
-
+    </mat-card-content>
+  </mat-card>
+  <div class="actions">
+    <button mat-flat-button color="primary" routerLink="/ranking">Ranking</button>
+    <button mat-flat-button color="primary" routerLink="/profile">Profile</button>
+    <button mat-flat-button color="primary" routerLink="/home">Home</button>
   </div>
-
-
 </div>
+

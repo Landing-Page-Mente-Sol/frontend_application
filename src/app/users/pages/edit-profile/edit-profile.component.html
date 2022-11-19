@@ -1,0 +1,33 @@
+<div class="form-container">
+  <mat-card class="form-card ">
+    <div class="complete-width">
+      <mat-card-title class="text-center">Edit Profile</mat-card-title>
+    </div>
+
+    <form (submit)="onSubmit()" #editProfileForm="ngForm">
+      <mat-card-content>
+        <mat-grid-list [cols]="formCols" rowHeight="fit">
+          <mat-grid-tile *ngFor="let field of formFields">
+            <mat-form-field appearance="outline" class="complete-width">
+              <mat-label>{{ field.label }}</mat-label>
+              <input (keydown)="keyDown(field)" [placeholder]="field.placeholder" [name]="field.field"
+                     matInput  [type]="field.type" [(ngModel)]="field.value" [maxlength]="field.maxLength!"
+                     [required]="field.requerid" [minlength]="field.minLength!"  />
+
+              <mat-error *ngIf="hasError(field.field, 'required')">{{field.label}} is <strong>required</strong></mat-error>
+              <mat-error *ngIf="hasError(field.field, 'pattern')"><strong>Not valid</strong> UPC code</mat-error>
+              <mat-error *ngIf="hasError(field.field, 'minlength')">{{ field.label }} must be large than <strong>{{ field.minLength }} characters</strong></mat-error>
+              <mat-error *ngIf="hasError(field.field, 'usernameExist')">The username {{ field.value }} <strong>already exist</strong></mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+        <button class="form-button" color="primary" mat-flat-button type="submit">Update</button>
+        <button class="form-button" mat-flat-button color="primary" routerLink="/profile" type="button">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+

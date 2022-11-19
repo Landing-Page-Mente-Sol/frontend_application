@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm, ValidatorFn} from "@angular/forms";
 import {FieldForm} from "../../model/field-form";
 import {notIsEqualsTo} from "../../../shared/util/validators";
-import {UsersService} from "../../../shared/services/users.service";
-import {Router} from "@angular/router";
+import {AccountsService} from "../../../shared/services/accounts.service";
+import {Account} from "../../../shared/models/account";
 
 @Component({
   selector: 'app-change-password',
@@ -38,12 +38,13 @@ export class ChangePasswordComponent implements OnInit {
       hide: true
     }
   ]
+  accountData: Account = {} as Account;
 
   changed: boolean = false;
 
   notEqualPassword = notIsEqualsTo('', 'differentPassword', 'password');
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private accountsService: AccountsService) { }
 
   ngOnInit(): void {
   }
@@ -52,7 +53,12 @@ export class ChangePasswordComponent implements OnInit {
     if(this.changeForm.valid){
       this.confirmPassword();
       if(this.changeForm.valid) {
-        this.changed = true;
+        this.accountsService.getByUsername(localStorage.getItem('username')??'')
+          .subscribe(response => {
+            this.accountData = response;
+            this.accountData.password = this.controlValue('password');
+            this.accountsService.update(response.id, this.accountData).subscribe(() => this.changed = true, error => console.log('error'))
+          })
       }
     }
   }
@@ -77,9 +83,8 @@ export class ChangePasswordComponent implements OnInit {
     this.changeForm?.controls[controlName]?.addValidators(validator);
   }
 
-  passwordVisibility(field: FieldForm) {
-    field.type = field.type === 'password' ? 'text' : 'password';
-    field.hide = !field.hide;
+  controlValue(controlName: string){
+    return this.changeForm?.controls[controlName].value;
   }
 
 }
