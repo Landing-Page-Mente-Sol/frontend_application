@@ -2,9 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm, ValidatorFn} from "@angular/forms";
 import {FieldForm} from "../../model/field-form";
 import {notIsEqualsTo} from "../../../shared/util/validators";
-import {UsersService} from "../../../shared/services/users.service";
-import {Router} from "@angular/router";
 import {AccountsService} from "../../../shared/services/accounts.service";
+import {Account} from "../../../shared/models/account";
 
 @Component({
   selector: 'app-change-password',
@@ -39,6 +38,7 @@ export class ChangePasswordComponent implements OnInit {
       hide: true
     }
   ]
+  accountData: Account = {} as Account;
 
   changed: boolean = false;
 
@@ -54,8 +54,11 @@ export class ChangePasswordComponent implements OnInit {
       this.confirmPassword();
       if(this.changeForm.valid) {
         this.accountsService.getByUsername(localStorage.getItem('username')??'')
-          .subscribe(response =>
-            this.accountsService.update(response.id, { password: this.controlValue('password') }).subscribe())
+          .subscribe(response => {
+            this.accountData = response;
+            this.accountData.password = this.controlValue('password');
+            this.accountsService.update(response.id, this.accountData).subscribe(() => this.changed = true, error => console.log('error'))
+          })
       }
     }
   }
