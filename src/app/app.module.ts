@@ -32,6 +32,10 @@ import {MatRadioModule} from "@angular/material/radio";
 import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.component";
 import {ChangePasswordComponent} from "./users/pages/change-password/change-password.component";
 import {NotFoundComponent} from "./public/not-found/not-found.component";
+import { RankingComponent } from './users/pages/ranking/ranking.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 
 
@@ -53,7 +57,8 @@ import {NotFoundComponent} from "./public/not-found/not-found.component";
     SignUpComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,9 @@ import {NotFoundComponent} from "./public/not-found/not-found.component";
     MatGridListModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

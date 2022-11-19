@@ -12,6 +12,7 @@ import {SignUpComponent} from "./public/sign-up/sign-up.component";
 import {ForgotPasswordComponent} from "./public/forgot-password/forgot-password.component";
 import {ChangePasswordComponent} from "./users/pages/change-password/change-password.component";
 import {NotFoundComponent} from "./public/not-found/not-found.component";
+import {RankingComponent} from "./users/pages/ranking/ranking.component";
 
 
 const routes: Routes = [
@@ -43,6 +44,11 @@ const routes: Routes = [
     path: 'change-password',
     component: ChangePasswordComponent
   },
+  {
+    path: 'ranking',
+    component: RankingComponent
+  }
+  ,
   {
     path: '**',
     pathMatch: 'full',
