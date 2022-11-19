@@ -9,7 +9,7 @@
     <div class="for" *ngFor="let asignatura of asignaturas; index as i">
 
       <div class="item_asignatura" (click)="filtro_asignatura(asignatura.id)">
-        <img src={{asignatura.image}}>
+        <img [src]="asignatura.image" alt="course image"/>
         <a href="buscar">{{asignatura.name}}</a>
       </div>
 

@@ -59,7 +59,7 @@ export class EditProfileComponent implements OnInit {
     },
   ]
 
-  successfulRoute: string = '/profile'
+  successfulRoute: string = '/home'
 
   @ViewChild('editProfileForm', {static: false})
   editProfileForm!: NgForm;
@@ -70,6 +70,12 @@ export class EditProfileComponent implements OnInit {
   constructor(private accountsService: AccountsService, private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(localStorage.getItem('username'))
+    this.accountsService.getByUsername(localStorage.getItem('username')??'')
+      .subscribe(response => {
+        this.accountData = response;
+        this.userData = response.user;
+      })
   }
 
   onSubmit()  {
@@ -77,7 +83,7 @@ export class EditProfileComponent implements OnInit {
       this.validateUpcCode();
       if(this.editProfileForm.valid){
         this.accountsService.getByUsername(this.controlValue('username')).subscribe(
-          (response)=> response ? this.putError('username', 'usernameExist') : this.registerUser()
+          (response)=> response ? this.putError('username', 'usernameExist') : this.updateAccount()
         )
       }
     }
@@ -101,25 +107,26 @@ export class EditProfileComponent implements OnInit {
     form.controls[controlName]?.updateValueAndValidity();
   }
 
-  registerUser() {
-
+  updateUser() {
     this.userData.upcCode = this.controlValue('upcCode');
     this.userData.career = this.controlValue('career');
-
-    //account data
-    this.accountData.username = this.controlValue('username');
-
-
-    this.usersService.update(localStorage.getItem('user') ?? '',this.userData).subscribe(
-      (response) => response ? this.updateAccount() : this.userData = {} as User
-    );
+    this.userData.cycle = parseInt(this.controlValue('cycle'));
+    console.log(this.userData);
+    this.usersService.update(this.userData.id, this.userData).subscribe((response) => {
+        this.router.navigateByUrl(this.successfulRoute).then()
+    });
   }
 
   updateAccount() {
+    this.accountData.username = this.controlValue('username');
     this.accountsService.getByUsername(localStorage.getItem('username') ?? '').subscribe(
       response =>
         this.accountsService.update(response.id, this.accountData).subscribe(
-          (response) => response ? this.router.navigateByUrl(this.successfulRoute) : console.log('account not created')
+          () => {
+            localStorage.removeItem('username');
+            localStorage.setItem('username', this.accountData.username);
+            this.updateUser();
+          }, error => { console.log('account not updated because ', error.error.message) }
       ))
   }
 

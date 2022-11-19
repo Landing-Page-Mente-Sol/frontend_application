@@ -17,6 +17,13 @@ export class AsignaturasComponentComponent implements OnInit {
 
     this.courseService.getAll().subscribe((response: any)=>{
       this.asignaturas = response;
+      this.asignaturas = this.asignaturas.sort((a, b)=>{
+        if ( a.name < b.name )
+          return -1;
+        if ( a.name > b.name )
+          return 1;
+        return 0;
+      });
     })
 
   }
