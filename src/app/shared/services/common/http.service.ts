@@ -72,8 +72,8 @@ export class HttpService<Type> {
 
   /*
   * url is added to base url
-  * if url must be as /search/username/{username}
-  * the consult will do as basePath + /search/username/{username}
+  * if url must be as /search-question/username/{username}
+  * the consult will do as basePath + /search-question/username/{username}
   * */
   exchangeGet(url: string): Observable<Type[]> | Observable<Type>{
     return this.http.get<Type[]>(this.basePath + url, this.httpOptions)

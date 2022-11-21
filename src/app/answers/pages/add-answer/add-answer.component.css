@@ -1,0 +1,38 @@
+.question-card * {
+  font-size: 1rem;
+}
+
+.question-card, .answer-card, .form-card {
+  border-radius: 1rem;
+}
+
+.question-card, .form-card {
+  width: 80%;
+  margin-top: 1rem;
+}
+.answer-card {
+  background-color: #dadada;
+  width: 100%;
+  min-height: 5rem;
+  min-width: 28rem;
+}
+
+.course {
+  align-items: center;
+  gap: 1px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1rem;
+  justify-content: center;
+  width: auto;
+  margin: 0 auto;
+}
+.course > p {
+  margin: auto 0;
+}
+
+.separator {
+  margin: 0.4rem 0;
+}
+

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from "./common/http.service";
-import { Question } from 'src/app/models/question';
+import { Question } from 'src/app/shared/models/question';
 import {Observable} from "rxjs";
 
 @Injectable({

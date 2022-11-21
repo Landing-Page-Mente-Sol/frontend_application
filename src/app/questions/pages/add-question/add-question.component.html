@@ -1,0 +1,40 @@
+<div class="form-container">
+  <mat-card>
+    <div class="text-center">
+      <mat-card-title class="text-center">Create Question</mat-card-title>
+    </div>
+    <hr />
+    <form (submit)="onSubmit()" #questionForm="ngForm">
+      <mat-card-content>
+        <mat-form-field class="complete-width" appearance="outline" >
+            <mat-label>Title</mat-label>
+          <input [name]="'title'" matInput required [(ngModel)]="questionData.title"
+                 placeholder="Title of question" type="text" />
+          <mat-error *ngIf="hasError('title','required')">The title is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="complete-width" appearance="outline" >
+          <mat-label>Description</mat-label>
+          <textarea [name]="'description'" matInput required [(ngModel)]="questionData.description"  placeholder="Title of question"></textarea>
+          <mat-error *ngIf="hasError('description','required')">The description is required</mat-error>
+        </mat-form-field>
+
+        <div class="three-grid-column one-rem-gap text-center">
+          <div class="courses" *ngFor="let course of courses">
+            <div class="course text-center" [id]="course.id" (click)="setCourse(course.id)">
+              <img height="40" [src]="course.image" alt="course image" />
+              <div class="form-container">
+                <span>{{ course.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <small class="text-center mat-error" *ngIf="notSelectCourse">Please, select a course</small>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+        <button mat-flat-button color="primary" type="submit">Publish question</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+

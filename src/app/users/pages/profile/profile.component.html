@@ -1,0 +1,60 @@
+<div class="form-container">
+  <mat-card class="profile-card">
+    <mat-card-header class="complete-width">
+      <img src="../../../../assets/images/usuario.png" alt="profile image"/>
+      <div class="flex profile">
+        <h1>{{ username }}</h1>
+        <img height="18" src="../../../../assets/images/Campana.png" alt="notifications" />
+      </div>
+    </mat-card-header>
+    <br />
+    <mat-card-content>
+      <div class="text-center">
+        <button class="rol"> {{ userType(user.userType) }} </button>
+      </div>
+      <div class="about text-center">
+        <h2>About</h2>
+        <hr />
+        <div class="three-grid-column">
+          <div class="item">
+            <p>Answers</p>
+            <p>{{userInformation.answers}}</p>
+          </div>
+
+          <div class="item">
+            <p>Points</p>
+            <p>{{ user.points }}</p>
+          </div>
+
+          <div class="item">
+            <p>Ranking</p>
+            <p>#{{ userInformation.ranking }}</p>
+          </div>
+
+          <div class="item">
+            <p>Career</p>
+            <p>{{ user.career }}</p>
+          </div>
+
+          <div class="item">
+            <p>Cycle</p>
+            <p>{{user.cycle}}</p>
+          </div>
+
+          <div class="item">
+            <p>Upc Code</p>
+            <p>{{ user.upcCode }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="text-center">
+      <button color="primary" class="form-button" mat-flat-button routerLink="/edit-profile">Edit profile</button>
+      <button color="primary" class="form-button" mat-flat-button routerLink="/change-password">Change password</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</div>
+
