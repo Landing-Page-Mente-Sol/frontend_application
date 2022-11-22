@@ -19,7 +19,8 @@
         </mat-card-content>
 
         <mat-card-actions class="text-center">
-          <button mat-flat-button color="primary" class="reply" (click)="reply(question.id)" >Reply</button>
+          <button mat-flat-button color="primary" class="reply" (click)="reply(question.id)">Reply</button>
+          <button *ngIf="question.user.id === userId" mat-flat-button color="primary" class="edit" (click)="edit(question.id)">Edit</button>
         </mat-card-actions>
 
       </mat-card>

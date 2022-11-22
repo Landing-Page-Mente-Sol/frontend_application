@@ -6,5 +6,7 @@ export interface Answer {
   madeAt: Date|string,
   user: User,
   question: Question,
-  id: number
+  id: number,
+  points?: number | string,
+  show?: boolean
 }

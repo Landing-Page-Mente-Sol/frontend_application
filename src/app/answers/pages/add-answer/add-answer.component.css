@@ -12,10 +12,10 @@
 }
 .answer-card {
   background-color: #dadada;
-  width: 100%;
   min-height: 5rem;
-  min-width: 28rem;
+  width: 30rem;
 }
+
 
 .course {
   align-items: center;
@@ -34,5 +34,17 @@
 
 .separator {
   margin: 0.4rem 0;
+}
+
+.points {
+  max-width: 6rem;
+}
+
+.rate {
+  margin-top: 2rem;
+}
+
+.cancel-edit {
+  margin-left: 0.5rem;
 }
 

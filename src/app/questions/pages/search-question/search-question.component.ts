@@ -17,9 +17,16 @@ export class SearchQuestionComponent implements OnInit {
     if(this.currentUrlHas('course')){
       this.activatedRoute.params.subscribe(params=>{
         const keyword = params['keyword'];
+
         if(keyword)
-          this.questionService.getByCourseAndTitleContains(params['courseId'], params['keyword']).subscribe(response => this.questions = response);
-        else this.questionService.getByCourse(params['courseId']).subscribe(response => this.questions = response);
+          this.questionService.getByCourseAndTitleContains(params['courseId'], params['keyword']).subscribe(
+            response => this.questions = response,
+            error => this.toHome()
+          );
+        else this.questionService.getByCourse(params['courseId']).subscribe(
+          response => this.questions = response,
+            error => this.toHome()
+        )
       })
     }
     else {
@@ -31,6 +38,10 @@ export class SearchQuestionComponent implements OnInit {
       })
 
     }
+  }
+
+  toHome() {
+    this.route.navigateByUrl('/home').then();
   }
 
   ngOnInit(): void {

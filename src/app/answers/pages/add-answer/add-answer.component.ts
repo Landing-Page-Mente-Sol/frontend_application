@@ -7,6 +7,7 @@ import { AnswersService } from '../../../shared/services/answers.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DateFormat} from "../../../shared/util/date-format";
 import {NgForm} from "@angular/forms";
+import {UsersService} from "../../../shared/services/users.service";
 @Component({
   selector: 'app-add-answer',
   templateUrl: './add-answer.component.html',
@@ -15,14 +16,29 @@ import {NgForm} from "@angular/forms";
 export class AddAnswerComponent implements OnInit {
   question: Question;
   answerData: Answer = {} as Answer;
-
   answers: Answer[];
+  permitEditAnswer: boolean = false;
+
+  editAnswerIndex: number = -1;
+
+  userId: number = parseInt(localStorage.getItem('user') ?? '');
+
+  points: any[] = [
+    10,
+    15,
+    50,
+    100
+  ]
 
   @ViewChild('answerForm', {static: false})
   answerForm!: NgForm;
 
-  constructor(private questionService: QuestionsService,
-    private answerService:AnswersService, private activatedRoute:ActivatedRoute, private route: Router)
+  constructor(private questionsService: QuestionsService,
+              private answersService:AnswersService,
+              private activatedRoute:ActivatedRoute,
+              private route: Router,
+              private usersService: UsersService
+  )
   {
     this.answers = [] as Answer[];
     this.question = {} as Question;
@@ -30,10 +46,10 @@ export class AddAnswerComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const questionId = params['questionId'];
       if(questionId){
-        this.questionService.getById(questionId).subscribe(response => this.question = response,
+        this.questionsService.getById(questionId).subscribe(response => this.question = response,
           error => this.toHome()
         );
-        this.answerService.getByQuestion(questionId).subscribe(response => this.answers = response);
+        this.answersService.getByQuestion(questionId).subscribe(response => this.answers = response);
       }
       else this.toHome();
     });
@@ -46,7 +62,7 @@ export class AddAnswerComponent implements OnInit {
   addAnswer() {
     this.answerData.madeAt = new Date();
 
-    this.answerService.createAnswer(
+    this.answersService.createAnswer(
       this.question.id,
       localStorage.getItem('user') ?? '',
       this.answerData
@@ -58,6 +74,19 @@ export class AddAnswerComponent implements OnInit {
     });
   }
 
+  updateAnswer() {
+
+    if(this.answers[this.editAnswerIndex].description !== this.answerData.description) {
+
+      this.answers[this.editAnswerIndex].description = this.answerData.description
+
+      this.answersService.update(this.answers[this.editAnswerIndex].id, this.answers[this.editAnswerIndex]).subscribe(()=> {
+        this.answerForm.resetForm();
+        this.answers[this.editAnswerIndex].show = true;
+      });
+    }
+  }
+
   ngOnInit(): void {
   }
 
@@ -67,12 +96,39 @@ export class AddAnswerComponent implements OnInit {
 
   onSubmit() {
     if(this.answerForm.valid){
-      this.addAnswer();
+      this.permitEditAnswer ? this.updateAnswer() : this.addAnswer();
+      this.permitEditAnswer = false;
     }
   }
 
   hasError(controlName: string, errorName: string){
     return this.answerForm?.controls[controlName]?.hasError(errorName);
+  }
+
+  verifyPoints(points: string | number) {
+    return points == 'None' || points == '';
+  }
+
+  rateAnswer(answer: Answer) {
+    this.usersService.getById(answer.user.id).subscribe(response =>{
+      if(response){
+        response.points += parseInt(answer.points!.toString());
+        this.usersService.update(response.id, response).subscribe(()=> answer.points = '' );
+      }
+    })
+  }
+
+  editAnswer(answer: Answer, index: number) {
+    this.permitEditAnswer = true;
+    this.answerData.description = answer.description;
+    this.editAnswerIndex = index;
+    this.answers[index].show = false;
+  }
+
+  cancelEdit(){
+    this.answerData.description = '';
+    this.answers[this.editAnswerIndex].show = true;
+    this.permitEditAnswer = false;
   }
 }
 

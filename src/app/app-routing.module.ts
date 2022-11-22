@@ -18,9 +18,26 @@ import {EditProfileComponent} from "./users/pages/profile/edit-profile/edit-prof
 
 const routes: Routes = [
 
-  {path:'home',component:HomeComponent},
-  {path: 'add-question', component:AddQuestionComponent},
-  {path:'profile',component:ProfileComponent},
+  {
+    path:'home',
+    component: HomeComponent
+  },
+  {
+    path: 'add-question',
+    component: AddQuestionComponent},
+  {
+    path:'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'edit-question',
+    pathMatch: "full",
+    redirectTo: 'add-question'
+  },
+  {
+    path: 'edit-question/:questionId',
+    component: AddQuestionComponent
+  },
   {
     path: 'search',
     component: SearchQuestionComponent
@@ -30,8 +47,18 @@ const routes: Routes = [
     component: SearchQuestionComponent
   },
   {
+    path: 'course',
+    pathMatch: "full",
+    redirectTo: 'home'
+  },
+  {
     path: 'course/:courseId',
     component: SearchQuestionComponent
+  },
+  {
+    path: 'course/:courseId/search',
+    pathMatch: "full",
+    redirectTo: 'course/:courseId'
   },
   {
     path: 'course/:courseId/search/:keyword',
@@ -73,6 +100,11 @@ const routes: Routes = [
   {
     path: 'not-found',
     component: NotFoundComponent
+  },
+  {
+    path: '**',
+    pathMatch: "full",
+    redirectTo: 'not-found'
   }
 ];
 

@@ -39,6 +39,7 @@ import {MatSortModule} from "@angular/material/sort";
 import { EditProfileComponent } from './users/pages/profile/edit-profile/edit-profile.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { ShowQuestionsComponent } from './questions/pages/show-questions/show-questions.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -82,7 +83,8 @@ import { ShowQuestionsComponent } from './questions/pages/show-questions/show-qu
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

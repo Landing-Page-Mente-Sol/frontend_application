@@ -14,6 +14,8 @@ export class ShowQuestionsComponent implements OnInit {
   @Input()
   questions!: Question[];
 
+  userId: number = parseInt(localStorage.getItem('user')!);
+
   constructor(private questionService: QuestionsService, private route: Router) { }
 
   ngOnInit(): void {
@@ -23,11 +25,15 @@ export class ShowQuestionsComponent implements OnInit {
       })
     }
   }
-  reply(e:number){
-    this.route.navigateByUrl('/question/' + e + '/add-answer').then();
+  reply(questionId: number){
+    this.route.navigateByUrl('/question/' + questionId + '/add-answer').then();
   }
 
   formatDate(date: string | Date) {
     return DateFormat.format(date, DateFormat.YYYYMMDD);
+  }
+
+  edit(questionId: number) {
+    this.route.navigateByUrl('/edit-question/' + questionId).then()
   }
 }
