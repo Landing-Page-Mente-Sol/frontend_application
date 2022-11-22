@@ -1,9 +1,9 @@
 <div class="aux">
   <div class="encabezado_contenedor">
-    <div class="logo centrar_v">
-      <a href="home">EasyBrain</a>
+    <div class="logo text-center">
+      <a [routerLink]="['home']">EasyBrain</a>
     </div>
-    <div class="search centrar_v centrar_h">
+    <div class="search text-center">
       <input class="encabezado_item buscador" type="text" placeholder="Que es lo que buscas?"
       [(ngModel)]="keyword">
       <div class="text-center">
@@ -13,8 +13,8 @@
       </div>
 
     </div>
-    <button class="encabezado_item boton centrar_v">¿Quieres ser tutor?</button>
+    <button mat-flat-button color="primary" class="tutor">Do you want to be a tutor?</button>
   </div>
-  <div class="franja"></div>
+  <div class="separator"></div>
 </div>
 

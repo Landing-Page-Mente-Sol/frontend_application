@@ -11,7 +11,9 @@ import { QueryString } from "../../util/query-string";
 })
 export class HttpService<Type> {
 
-  basePath = "http://localhost:8080/api/v1";
+  basePath = "https://easy-brain.herokuapp.com/api/v1";
+  BASE_PATH: string = "https://easy-brain.herokuapp.com/api/v1";
+
   httpOptions = { headers: new HttpHeaders({"Content-Type":"application/json"})};
   constructor(protected http: HttpClient) { }
 

@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class QuestionsService extends HttpService<Question>{
-  override basePath = "http://localhost:8080/api/v1/questions";
+  override basePath = this.BASE_PATH + "/questions";
 
   createQuestion(courseId: string | number, userId: string | number, item: any): Observable<Question> {
     return this.exchangeCreate(`/${courseId}/${userId}`, item);

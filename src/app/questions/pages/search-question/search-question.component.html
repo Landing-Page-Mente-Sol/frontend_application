@@ -1,3 +1,8 @@
-<app-show-questions [questions]="questions">
+<app-nothing-for-display *ngIf="none; else showQuestions">
+</app-nothing-for-display>
+<ng-template #showQuestions>
+  <app-show-questions [questions]="questions">
+  </app-show-questions>
+</ng-template>
 
-</app-show-questions>
+

@@ -23,9 +23,10 @@ export class ProfileComponent implements OnInit {
     this.user = {} as User;
     this.userInformation = {} as UserInformation;
 
+
     this.userService.getById(localStorage.getItem("user")!).subscribe((response)=>{
       this.user = response;
-      this.answerService.getByUser(this.user.id).subscribe(response => this.userInformation.answers = response.length)
+      this.answerService.getByUser(this.user.id).subscribe(response => response ? this.userInformation.answers = response.length : this.userInformation.answers = 0)
       this.userService.getTop100DescByPoints().subscribe((response)=>{
         this.userInformation.ranking = 'undefined';
         response.map((user, index) => {

@@ -40,6 +40,7 @@ import { EditProfileComponent } from './users/pages/profile/edit-profile/edit-pr
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { ShowQuestionsComponent } from './questions/pages/show-questions/show-questions.component';
 import {MatSelectModule} from "@angular/material/select";
+import { NothingForDisplayComponent } from './shared/components/nothing-for-display/nothing-for-display.component';
 
 
 
@@ -64,7 +65,8 @@ import {MatSelectModule} from "@angular/material/select";
     NotFoundComponent,
     RankingComponent,
     EditProfileComponent,
-    ShowQuestionsComponent
+    ShowQuestionsComponent,
+    NothingForDisplayComponent
   ],
   imports: [
     BrowserModule,

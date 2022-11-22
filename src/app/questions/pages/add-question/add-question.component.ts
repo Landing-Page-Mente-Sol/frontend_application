@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { CoursesService } from '../../../shared/services/courses.service';
 import { Course} from "../../../shared/models/course";
 import { Question } from "../../../shared/models/question";
@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './add-question.component.html',
   styleUrls: ['./add-question.component.css']
 })
-export class AddQuestionComponent implements OnInit {
+export class AddQuestionComponent implements OnInit, AfterViewChecked {
   courses: Course[];
 
   @ViewChild('questionForm', {static: false})
@@ -36,6 +36,12 @@ export class AddQuestionComponent implements OnInit {
       this.initData();
 
   }
+
+  ngAfterViewChecked(): void {
+    if(this.isEdit)
+      this.setCourse(this.questionData.course.id);
+  }
+
 
   setCourses(courses: Course[]) {
     this.courses = courses.sort(
@@ -73,7 +79,7 @@ export class AddQuestionComponent implements OnInit {
   setQuestionData(question: Question) {
     this.questionData = question;
     this.initialQuestionData = structuredClone(question);
-    this.setCourse(question.course.id);
+
   }
 
   setCourse(i: number) {

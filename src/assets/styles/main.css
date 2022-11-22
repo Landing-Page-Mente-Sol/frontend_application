@@ -45,3 +45,7 @@
 .three-grid-column {
   grid-template-columns: repeat(3,1fr);
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

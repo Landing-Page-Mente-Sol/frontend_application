@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 
 import { QuestionsService } from '../../../shared/services/questions.service';
 import { Question } from "../../../shared/models/question";
@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class SearchQuestionComponent implements OnInit {
   questions: Question[];
+  none: boolean = false;
   constructor(private questionService: QuestionsService, private route: Router, private activatedRoute: ActivatedRoute)
   {
     this.questions = [] as Question[];
@@ -20,11 +21,11 @@ export class SearchQuestionComponent implements OnInit {
 
         if(keyword)
           this.questionService.getByCourseAndTitleContains(params['courseId'], params['keyword']).subscribe(
-            response => this.questions = response,
+            response => this.setQuestions(response),
             error => this.toHome()
           );
         else this.questionService.getByCourse(params['courseId']).subscribe(
-          response => this.questions = response,
+          response => this.setQuestions(response),
             error => this.toHome()
         )
       })
@@ -38,6 +39,14 @@ export class SearchQuestionComponent implements OnInit {
       })
 
     }
+  }
+
+  setQuestions(questions: Question[]) {
+    if(questions) {
+      this.questions = questions;
+      this.none = questions.length === 0;
+    }
+    else this.none = true;
   }
 
   toHome() {
