@@ -1,0 +1,20 @@
+<div class="aux">
+  <div class="encabezado_contenedor">
+    <div class="logo text-center">
+      <a [routerLink]="['home']">EasyBrain</a>
+    </div>
+    <div class="search text-center">
+      <input class="encabezado_item buscador" type="text" placeholder="Que es lo que buscas?"
+      [(ngModel)]="keyword">
+      <div class="text-center">
+        <button mat-flat-button color="primary" (click)="search(keyword)">
+          Buscar
+        </button>
+      </div>
+
+    </div>
+    <button mat-flat-button color="primary" class="tutor">Do you want to be a tutor?</button>
+  </div>
+  <div class="separator"></div>
+</div>
+

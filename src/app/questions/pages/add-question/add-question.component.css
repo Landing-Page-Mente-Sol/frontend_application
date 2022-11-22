@@ -1,0 +1,23 @@
+
+.course {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  width: 10rem;
+  border-width: 2px;
+  background-color: #dadada;
+  border-color: black;
+  border-radius: 2px;
+}
+
+.course:hover {
+  background-color: #4eB9e7;
+  cursor: pointer;
+}
+
+.selected {
+  background: #4eB9e7;
+}
+
+.edit {
+  margin-left: 0.3rem;
+}

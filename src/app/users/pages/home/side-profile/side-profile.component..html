@@ -1,0 +1,25 @@
+<br />
+<div class="profile-container complete-width grid one-rem-gap">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <img class="profile-image" routerLink="/profile" src="../../../../../assets/images/user.png" alt="user profile">
+      <span>{{ user.firstname }}</span>
+    </mat-card-header>
+    <br />
+    <mat-card-content >
+      <div class="grid one-rem-gap">
+        <div class="flex one-rem-gap">
+          <span>Answers</span> <span>{{userInformation.answers}}</span>
+        </div>
+
+        <div class="flex one-rem-gap">
+          <span>Brain Points</span> <span> {{ user.points }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="actions">
+    <button *ngFor="let button of routerButtons" mat-flat-button color="primary" [routerLink]="button.link">{{button.title}}</button>
+  </div>
+</div>
+

@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeadingComponentComponent } from './heading.component/heading.component.component';
-import { AsignaturasComponentComponent } from './asignaturas.component/asignaturas.component.component';
-import { PerfilComponentComponent } from './perfil.component/perfil.component.component';
-import { AddQuestionComponentComponent } from './add-question.component/add-question.component.component';
-import { HomeComponentComponent } from './home.component/home.component.component';
+import { HeadingComponent } from './users/pages/home/heading/heading.component';
+import { SideCoursesComponent } from './courses/pages/side-courses/side-courses.component';
+import { ProfileComponent } from './users/pages/profile/profile.component';
+import { AddQuestionComponent } from './questions/pages/add-question/add-question.component';
+import { HomeComponent } from './users/pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AgregarAsignaturaComponentComponent } from './agregar-asignatura.component/agregar-asignatura.component.component';
-import { PerfilBarraComponentComponent } from './perfil-barra.component/perfil-barra.component.component';
-import { BuscarComponent } from './buscar/buscar.component';
-import { AgregarRespuestaComponent } from './agregar-respuesta/agregar-respuesta.component';
+import { AddCourseComponent } from './courses/pages/add-course/add-course.component';
+import { SideProfileComponent } from './users/pages/home/side-profile/side-profile.component.';
+import { SearchQuestionComponent } from './questions/pages/search-question/search-question.component';
+import { AddAnswerComponent } from './answers/pages/add-answer/add-answer.component';
 
 
 
@@ -36,22 +36,26 @@ import { RankingComponent } from './users/pages/ranking/ranking.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
-import { EditProfileComponent } from './users/pages/edit-profile/edit-profile.component';
+import { EditProfileComponent } from './users/pages/profile/edit-profile/edit-profile.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { ShowQuestionsComponent } from './questions/pages/show-questions/show-questions.component';
+import {MatSelectModule} from "@angular/material/select";
+import { NothingForDisplayComponent } from './shared/components/nothing-for-display/nothing-for-display.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeadingComponentComponent,
-    AsignaturasComponentComponent,
-    PerfilComponentComponent,
-    AddQuestionComponentComponent,
-    HomeComponentComponent,
-    AgregarAsignaturaComponentComponent,
-    PerfilBarraComponentComponent,
-    BuscarComponent,
-    AgregarRespuestaComponent,
+    HeadingComponent,
+    SideCoursesComponent,
+    ProfileComponent,
+    AddQuestionComponent,
+    HomeComponent,
+    AddCourseComponent,
+    SideProfileComponent,
+    SearchQuestionComponent,
+    AddAnswerComponent,
     CustomAsyncValidatorDirective,
     CustomValidatorDirective,
     SignInComponent,
@@ -60,7 +64,9 @@ import { EditProfileComponent } from './users/pages/edit-profile/edit-profile.co
     ChangePasswordComponent,
     NotFoundComponent,
     RankingComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ShowQuestionsComponent,
+    NothingForDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +84,9 @@ import { EditProfileComponent } from './users/pages/edit-profile/edit-profile.co
     MatRadioModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonToggleModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
