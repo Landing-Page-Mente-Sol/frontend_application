@@ -1,0 +1,22 @@
+.course-container {
+  background-color: #dadada;
+  border-radius: 1rem;
+}
+
+.course {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.course > img {
+  cursor: pointer;
+}
+
+.courses {
+  gap: 0.9rem;
+}
+
+.course > button {
+  border-radius: 0.5rem;
+}

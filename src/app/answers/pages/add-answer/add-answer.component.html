@@ -1,0 +1,81 @@
+<div class="form-container">
+  <mat-card class="question-card text-center">
+    <div class="question-header">
+      <mat-card-title> {{ question.title }} </mat-card-title>
+      <mat-card-subtitle>{{ formatDate(question.madeAt) }}</mat-card-subtitle>
+    </div>
+    <mat-card-content class="grid">
+      <div class="two-grid-column form-container publisher">
+        <span><strong>Publish by:</strong> {{ question.user.firstname }}</span>
+        <div class="flex course text-center">
+          <img class="" [src]="question.course.image" width="45" alt="course image" />
+          <p class="">{{question.course.name}}</p>
+        </div>
+      </div>
+      <div class="separator"></div>
+
+      <!--Answers-->
+      <div class="grid one-rem-gap form-container">
+        <div class="answers" *ngFor="let answer of answers; index as i">
+          <mat-card *ngIf="answer.show === undefined || answer.show" class="answer-card">
+            <div class="two-grid-column complete-width">
+              <div>
+                <strong>Answer of: </strong> {{ answer.user.firstname }}
+              </div>
+              <mat-card-subtitle>{{ formatDate(answer.madeAt) }} </mat-card-subtitle>
+            </div>
+
+            <mat-card-content class="answer-description" >
+              <div class="answer-description">
+                {{answer.description}}
+              </div>
+            </mat-card-content>
+
+            <form *ngIf="answer.user.id !== userId; else edit">
+              <div class="flex rate two-rem-gap form-container">
+                <mat-form-field class="points" appearance="outline">
+                  <mat-label>Points</mat-label>
+                  <mat-select [(value)]="answer.points">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let point of points" [value]="point">
+                      {{point}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-card-actions>
+                  <button mat-flat-button (click)="rateAnswer(answer)" [disabled]="verifyPoints(answer.points ?? '')" color="primary" type="button">Rate Answer</button>
+                </mat-card-actions>
+              </div>
+            </form>
+
+            <ng-template #edit>
+              <mat-card-actions>
+                <button mat-flat-button [disabled]="permitEditAnswer" (click)="editAnswer(answer, i)" color="primary" type="button">Edit Answer</button>
+              </mat-card-actions>
+            </ng-template>
+
+          </mat-card>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+<div class="form-container">
+  <mat-card class="form-card">
+    <form (submit)="onSubmit()" #answerForm="ngForm">
+      <mat-form-field class="complete-width" appearance="outline">
+        <label for="answer-content">Answer content</label>
+        <textarea name="answer-content" required [(ngModel)]="answerData.description" id="answer-content" matInput></textarea>
+        <mat-error *ngIf="hasError('answer-content', 'required')">Please, fill the this field.</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions class="text-center">
+        <button mat-flat-button type="submit" color="primary">Reply</button>
+        <button mat-flat-button (click)="cancelEdit()" class="cancel-edit" type="button" *ngIf="permitEditAnswer" color="warn">Cancel</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+

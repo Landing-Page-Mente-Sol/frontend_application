@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from "./common/http.service";
-import { Question } from 'src/app/models/question';
+import { Question } from 'src/app/shared/models/question';
 import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionsService extends HttpService<Question>{
-  override basePath = "http://localhost:8080/api/v1/questions";
+  override basePath = this.BASE_PATH + "/questions";
 
   createQuestion(courseId: string | number, userId: string | number, item: any): Observable<Question> {
     return this.exchangeCreate(`/${courseId}/${userId}`, item);

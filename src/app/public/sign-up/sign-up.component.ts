@@ -203,6 +203,7 @@ export class SignUpComponent implements OnInit {
     this.userData.id = 0;
     this.userData.points = 0;
     this.userData.career = this.controlValue('career');
+    this.userData.cycle = parseInt(this.controlValue('cycle'));
 
     //account data
     this.accountData.password = this.controlValue('password');

@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class AccountsService extends HttpService<Account>{
-  override basePath = "http://localhost:8080/api/v1/accounts"
+  override basePath = this.BASE_PATH + '/accounts'
 
   createAccount(userId: string | number, item: any): Observable<Account> {
     return this.exchangeCreate(`/{userId}`, item);

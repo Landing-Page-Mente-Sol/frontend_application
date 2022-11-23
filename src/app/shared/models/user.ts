@@ -7,5 +7,5 @@ export interface User {
   upcCode: string,
   career: string,
   cycle: number,
-  points?: number
+  points: number
 }

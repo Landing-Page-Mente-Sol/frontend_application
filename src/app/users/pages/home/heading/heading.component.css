@@ -1,0 +1,79 @@
+
+.separator{
+  background: #03A9F4;
+  width: 100%;
+  height: 5rem;
+}
+
+.encabezado_contenedor{
+height: auto;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+text-align: center;
+background-color: #dadada;
+padding-top: 0.5rem;
+}
+
+.contenido_contenedor{
+  display: grid;
+  grid-template-columns: 0.8fr 2.4fr 0.8fr;
+}
+
+.encabezado_item{
+  height: 40px;
+  background: #D9D9D9;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.encabezado_item.buscador{
+  width: 611px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #8F8C8C;
+  background-color: #D9D9D9;
+  border-color: #ffff;
+}
+.boton{
+  width: 305px;
+  background-color: #4EB9E7;
+  border-color: #ffff;
+  color: #ffff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 189px;
+  cursor: pointer;
+}
+
+.search{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.boton2{
+  width: 150px;
+}
+
+.logo{
+margin-top: auto;
+margin-bottom: auto;
+}
+.logo a{
+  font-family: Arial, Helvetica, sans-serif;
+font-weight: 700;
+font-size: 40px;
+color: #000000;
+text-decoration: none;
+}
+
+.tutor {
+  margin: auto;
+}
+
+.centrar_h{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

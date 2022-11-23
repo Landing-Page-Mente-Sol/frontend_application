@@ -1,4 +1,5 @@
 export interface Course {
-  curso: string,
-  imagen: string
+  id: number,
+  name: string,
+  image: string,
 }

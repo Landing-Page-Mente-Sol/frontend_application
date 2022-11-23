@@ -8,7 +8,7 @@ import {catchError, retry} from "rxjs/operators";
   providedIn: 'root'
 })
 export class UsersService extends HttpService<User>{
-  override basePath = "http://localhost:8080/api/v1/users";
+  override basePath = this.BASE_PATH + "/users";
 
   getByEmail(email: String): Observable<User>{
     return this.exchangeGet(`/search/email/${email}`) as Observable<User>;

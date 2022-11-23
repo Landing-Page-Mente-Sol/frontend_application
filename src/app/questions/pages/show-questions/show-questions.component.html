@@ -1,0 +1,29 @@
+<br />
+<div class="grid two-rem-gap">
+  <div *ngFor="let question of questions">
+    <div class="form-container">
+      <mat-card class="question">
+        <mat-card-header>
+          <img src="assets/images/user.png" alt="user image" />
+          <div class="course text-center">
+            <img [src]="question.course.image" style="width: 45px; height:40px" alt="course image" />
+            <p class="course-name">{{question.course.name}}</p>
+          </div>
+          <span class="text-center">{{formatDate(question.madeAt)}}</span>
+        </mat-card-header>
+
+        <mat-card-content class="text-center">
+          <p class="title">{{question.title}}</p>
+          <p class="description">{{question.description}}</p>
+
+        </mat-card-content>
+
+        <mat-card-actions class="text-center">
+          <button mat-flat-button color="primary" class="reply" (click)="reply(question.id)">Reply</button>
+          <button *ngIf="question.user.id === userId" mat-flat-button color="primary" class="edit" (click)="edit(question.id)">Edit</button>
+        </mat-card-actions>
+
+      </mat-card>
+    </div>
+  </div>
+</div>

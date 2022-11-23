@@ -11,7 +11,9 @@ import { QueryString } from "../../util/query-string";
 })
 export class HttpService<Type> {
 
-  basePath = "http://localhost:8080/api/v1";
+  basePath = "https://easy-brain.herokuapp.com/api/v1";
+  BASE_PATH: string = "https://easy-brain.herokuapp.com/api/v1";
+
   httpOptions = { headers: new HttpHeaders({"Content-Type":"application/json"})};
   constructor(protected http: HttpClient) { }
 
@@ -72,8 +74,8 @@ export class HttpService<Type> {
 
   /*
   * url is added to base url
-  * if url must be as /search/username/{username}
-  * the consult will do as basePath + /search/username/{username}
+  * if url must be as /search-question/username/{username}
+  * the consult will do as basePath + /search-question/username/{username}
   * */
   exchangeGet(url: string): Observable<Type[]> | Observable<Type>{
     return this.http.get<Type[]>(this.basePath + url, this.httpOptions)
