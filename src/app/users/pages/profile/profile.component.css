@@ -1,0 +1,37 @@
+.profile-card {
+  width: 100%;
+  max-width: 25rem;
+  border-radius: 15px;
+  border-color: #000;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: #dadada;
+}
+
+.left {
+  position: absolute;
+  right: 3rem;
+}
+
+.rol{
+  border-color: #000000;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  max-width: 5rem;
+}
+
+.profile {
+  margin: 0 auto;
+  gap: 4rem;
+}
+
+
+.item > p:first-child {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.mat-card-actions > button:first-child {
+  margin-right: 1rem;
+}

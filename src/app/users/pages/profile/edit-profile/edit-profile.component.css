@@ -1,0 +1,18 @@
+.form-card  {
+  width: 100%;
+  max-width: 23rem;
+  margin: 2rem 0;
+  background-color: #dadada;
+}
+
+.mat-grid-list {
+  height: 18.5rem;
+}
+
+.mat-card-actions {
+  margin-bottom: 0;
+}
+
+.mat-card-actions > button:first-child {
+  margin-right: 1rem;
+}

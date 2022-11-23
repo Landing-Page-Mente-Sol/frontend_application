@@ -4,6 +4,8 @@ import {NgForm, Validators} from "@angular/forms";
 import {UsersService} from "../../shared/services/users.service";
 import {Router} from "@angular/router";
 import {everError} from "../../shared/util/validators";
+import {AccountsService} from "../../shared/services/accounts.service";
+import {Account} from "../../shared/models/account";
 
 @Component({
   selector: 'app-sign-in',
@@ -37,23 +39,28 @@ export class SignInComponent implements OnInit {
   @ViewChild('singInForm', {static: false})
   singInForm!: NgForm;
 
-  constructor(private usersService: UsersService, private route: Router) { }
+  constructor(private usersService: UsersService, private accountsService: AccountsService,private route: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     if(this.singInForm.valid){
-      this.usersService.getByField('username', this.controlValue('username')).subscribe(
-        (response)=> response.length === 0 ? this.putError('username', 'notExistUsername') : this.validateLogin())
+      this.accountsService.getByUsername(this.controlValue('username'))
+        .subscribe( (response) => !response ? this.putError('username', 'notExistUsername') : this.validateLogin())
     }
   }
 
   validateLogin() {
-    this.usersService.getByFields(['username', 'password'],
-      [this.controlValue('username'), this.controlValue('password')])
+    this.accountsService.getByUsernameAndPassword(this.controlValue('username'), this.controlValue('password'))
       .subscribe((response) =>
-        response.length === 0 ? this.putError('password','incorrectPassword') : this.route.navigateByUrl(this.loginRoute).then())
+        !response ? this.putError('password','incorrectPassword') : this.login(response))
+  }
+
+  login(account: Account) {
+    localStorage.setItem('user', account.user.id.toString());
+    localStorage.setItem('username', account.username);
+    this.route.navigateByUrl(this.loginRoute).then()
   }
 
   onChangeField(field: FieldForm) {}

@@ -1,0 +1,22 @@
+.profile-card{
+  background-color: #dadada;
+}
+
+span {
+  font-size: 1rem;
+}
+.flex > span:first-child {
+  font-weight: 700;
+}
+
+.flex > span:first-child:after {
+  content: ':';
+}
+
+.profile-image {
+  cursor: pointer;
+}
+
+.actions > button {
+  margin-right: 0.3rem;
+}

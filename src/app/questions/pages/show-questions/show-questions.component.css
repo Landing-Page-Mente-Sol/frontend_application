@@ -1,0 +1,48 @@
+.question {
+  background-color: #dadada;
+  width: 80%;
+  border-radius: 1rem;
+}
+
+.reply {
+  border-radius: 0.5rem;
+  width: 8rem;
+}
+
+
+.brain-welcome {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.course {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  margin-bottom: 0.5rem;
+  height: 43px;
+  margin-right: auto;
+  background-color: #ffff;
+  border-radius: 0.5rem;
+  border-color: black;
+  border-width: 10px;
+}
+
+.course-name {
+  margin: auto 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.description {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: auto 0;
+}
+
+.edit {
+  margin-left: 0.3rem;
+}
+

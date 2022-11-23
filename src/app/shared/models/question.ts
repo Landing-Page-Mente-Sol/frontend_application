@@ -1,9 +1,10 @@
-import {Answer} from "./answer";
+import { Course } from "./course";
+import { User } from "./user";
 export interface Question {
-  etiqueta: number,
-  descripcion: string,
-  titulo: string,
-  fecha: string,
-  autor: string,
-  respuestas: Answer[];
+  description: string,
+  title: string,
+  madeAt: string|Date,
+  user: User,
+  course: Course,
+  id:number,
 }

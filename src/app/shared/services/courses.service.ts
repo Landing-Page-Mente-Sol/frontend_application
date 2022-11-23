@@ -6,5 +6,5 @@ import {Course} from "../models/course";
   providedIn: 'root'
 })
 export class CoursesService extends HttpService<Course>{
-  override basePath="http://localhost:3000/api/v1/asignaturas"
+  override basePath = this.BASE_PATH + "/courses"
 }

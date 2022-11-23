@@ -1,12 +1,11 @@
-import {Tuple} from "./tuple";
 export interface User {
   id: number,
-  dates: Tuple[],
-  name: string,
-  lastName: string,
+  firstname: string,
+  lastname: string,
   email: string,
-  password: string,
-  type: string,
-  username: string,
-  upcCode: string
+  userType: string,
+  upcCode: string,
+  career: string,
+  cycle: number,
+  points: number
 }

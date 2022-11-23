@@ -13,6 +13,6 @@ export class AppComponent {
   }
   validateRoute(){
     return this.router.url !== '/sign-in' && this.router.url !== '/sign-up'
-      && this.router.url !== '/forgot-password' && this.router.url !== '/change-password'
+      && this.router.url !== '/forgot-password' && this.router.url !== '/change-password' && this.router.url !== '/not-found';
   }
 }

@@ -1,0 +1,13 @@
+.ranking-card {
+  width: 90%;
+  margin: 1rem 0;
+}
+
+.mat-header-cell, .mat-paginator, ::ng-deep .mat-paginator-page-size .mat-select-trigger {
+  font-size: 1rem;
+  color: black;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}

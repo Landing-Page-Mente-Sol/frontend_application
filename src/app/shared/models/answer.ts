@@ -1,6 +1,12 @@
+import { Question } from "./question"
+import { User } from "./user"
+
 export interface Answer {
-  descripcion: string,
-  fecha: string,
-  autor: string,
-  index_pregunta: number
+  description: string,
+  madeAt: Date|string,
+  user: User,
+  question: Question,
+  id: number,
+  points?: number | string,
+  show?: boolean
 }
