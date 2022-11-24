@@ -40,7 +40,7 @@ export class AddAnswerComponent implements OnInit {
               private usersService: UsersService
   )
   {
-    this.answers = [] as Answer[];
+    this.answers = [];
     this.question = {} as Question;
 
     this.activatedRoute.params.subscribe(params => {
@@ -68,6 +68,8 @@ export class AddAnswerComponent implements OnInit {
       this.answerData
     ).subscribe(response => {
       if(response){
+        if(!this.answers)
+          this.answers = new Array();
         this.answers.push(response);
         this.answerForm.resetForm();
       }
