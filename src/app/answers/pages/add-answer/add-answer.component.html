@@ -3,6 +3,9 @@
     <div class="question-header">
       <mat-card-title> {{ question.title }} </mat-card-title>
       <mat-card-subtitle>{{ formatDate(question.madeAt) }}</mat-card-subtitle>
+      <div class="description">
+        <p>{{question.description}}</p>
+      </div>
     </div>
     <mat-card-content class="grid">
       <div class="two-grid-column form-container publisher">
@@ -12,6 +15,7 @@
           <p class="">{{question.course.name}}</p>
         </div>
       </div>
+
       <div class="separator"></div>
 
       <!--Answers-->
